@@ -22,6 +22,7 @@ public class lista<T>{
         while(q != null){
             System.out.println(q.getInfo());
             q = q.getLiga();
+            //
         }
     }
     
