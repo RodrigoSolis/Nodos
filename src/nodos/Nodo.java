@@ -10,7 +10,7 @@ public class Nodo<T> {
         this.liga = null;
     }
     
-    Nodo(){ }
+    Nodo(){}
 
     public T getInfo() {
         return info;
@@ -26,10 +26,6 @@ public class Nodo<T> {
 
     public void setLiga(Nodo<T> liga) {
         this.liga = liga;
-    }
-    
-    
-    
-    
+    }    
     
 }

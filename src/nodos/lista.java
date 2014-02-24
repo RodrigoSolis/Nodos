@@ -101,9 +101,14 @@ public class lista<T>{
             }
         }            
         if (ban){
-            s = q.getLiga();
-            q.setLiga(t);
-            t.setLiga(s);
+            if (q.getLiga() != null){
+                s = q.getLiga();
+                q.setLiga(t);
+                t.setLiga(s);
+            }else{
+                q.setLiga(t);
+                t.setLiga(null);
+            }
         }        
     }
     
@@ -147,6 +152,71 @@ public class lista<T>{
         if (ban){
             s.setInfo(dato);
         }
+    }
+    
+    public void dividir(Integer num){
+        int cont = 0;
+        Nodo<T> q = p;
+        while(q != null){
+            q = q.getLiga();
+            cont++;
+        }
+        q = p;
+        int primeraParte = cont - cont/2;
+        cont = 0;
+        if (num == 1){
+            while (cont != primeraParte){
+                System.out.println(q.getInfo());
+                q = q.getLiga();
+                cont++;
+            }
+        }else{
+            while(cont != primeraParte){
+                q = q.getLiga();
+                cont++;
+            }
+            while(q != null){
+                System.out.println(q.getInfo());
+                q = q.getLiga();
+            }
+        }
+    }
+    
+    
+    public void eliminarDuplicados(){
+        Nodo<T> q = p;
+        Nodo<T> r = q;
+        Nodo<T> s = q;
+        boolean ban;
+        while (q != null && s != null){
+            ban = false;
+            s = q.getLiga();
+            while (s.getInfo() != q.getInfo() && !ban){
+                if (s.getLiga() != null){
+                    r = s;
+                    s = s.getLiga();
+                }else{
+                    ban = true;
+                }
+            }
+            if (!ban){
+                if (s.getLiga() != null){
+                    r.setLiga(s.getLiga());
+                }else{
+                    r.setLiga(null);
+                }
+            }
+            q = q.getLiga();
+        }
+    }
+    
+    public void ordenar(){
+        Nodo<T> q = p;
+        
+    }
+    
+    public void dividirAlternado(Integer num){
+        Nodo<T> q = p;
     }
     
     
